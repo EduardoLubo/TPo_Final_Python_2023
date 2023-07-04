@@ -30,7 +30,7 @@
                 <td>{{ producto.cantidad }}</td>
                 <td align="right">{{ producto.precio }}</td>
                 <!-- Al hacer clic en el botón"Eliminar" de una fila, se elimina el producto tanto en la API como en la lista local, actualizando la interfaz en tiempo real. -->
-                <td><button @click="eliminarProducto(producto.codigo)">Eliminar</button></td>
+                <td><button @click="confirmarEliminar(producto.codigo)">Eliminar</button></td>
             </tr>
         </tbody>
     </table>
@@ -81,7 +81,13 @@
                             alert('Error al obtener los productos.');
                         });
                 },
-
+								
+				confirmarEliminar(tuproductocodigo) {
+					if (confirm('¿Estás seguro de que deseas eliminar el producto seleccionado?')) {
+						this.eliminarProducto(tuproductocodigo);
+					}	
+				},
+				
                 eliminarProducto(codigo) {
                     //Se activa cuando se hace clic en el botón "Eliminar" de una fila de producto. Realiza una solicitud DELETE a la API para eliminar el producto con el código especificado. Si la respuesta es exitosa, se actualiza la lista local productos filtrando el producto eliminado y se reflejan los cambios en la interfaz.
                     // Eliminamos el producto de la fila seleccionada
