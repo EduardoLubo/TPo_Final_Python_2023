@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <h1>Listado de Productos</h1>
+    <div class="img"><img src="img/logo_codo.png" alt="codoacodo" width="100px"></div>
+    <h3>Codo a Codo 2023</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th align="right">Precio</th>
+            </tr>
+        </thead>
+        <tbody id="tablaProductos">
+        </tbody>
+    </table>
+
+    <div class="contenedor-centrado">
+        <a href="index.html">Menu principal</a>
+    </div>
+
+    <script>
+//El objetivo principal es obtener los datos de los productos desde la API y mostrarlos en la tabla dentro del documento HTML.
+// El código JavaScript se encarga de obtener los productos desde la API, parsear los datos recibidos, y luego crear y agregar filas a la tabla en el documento HTML para mostrar los productos al usuario. La manipulación del DOM se realiza utilizando métodos y propiedades proporcionados por el navegador, como createElement, innerHTML y appendChild.
+
+        //const URL = "http://127.0.0.1:5000/"
+        const URL = "https://eduardolubo.pythonanywhere.com/"
+
+        // Realizamos la solicitud GET al servidor para obtener todos los productos
+        fetch(URL + 'productos')
+            //se verifica si la respuesta del servidor es exitosa mediante la propiedad ok de la respuesta.
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json(); // Parseamos la respuesta JSON
+                } else {
+                    // Si hubo un error, lanzar explícitamente una excepción
+                    // para ser "catcheada" más adelante
+                    throw new Error('Error al obtener los productos.');
+                }
+            })
+
+            //Se accede al elemento HTML con el id "tablaProductos" utilizando document.getElementById('tablaProductos')
+            .then(function (data) {
+                var tablaProductos = document.getElementById('tablaProductos');
+
+                // Se utiliza un bucle forEach para iterar sobre los productos obtenidos en data. Iteramos sobre los productos y agregamos filas a la tabla
+                data.forEach(function (producto) {
+                    //Para cada producto, se crea una nueva fila de tabla utilizando document.createElement('tr').
+                    var fila = document.createElement('tr');
+
+                    //Se accede a las propiedades del producto, y se utiliza la propiedad innerHTML para asignar el contenido HTML de la fila.
+                    fila.innerHTML = '<td>' + producto.codigo + '</td>' +
+                        '<td>' + producto.descripcion + '</td>' +
+                        '<td align="right">' + producto.cantidad + '</td>' +
+                        '<td align="right">&nbsp; &nbsp;&nbsp; &nbsp;' + producto.precio + '</td>';
+
+                    //Una vez que se crea la fila con el contenido del producto, se agrega a la tabla utilizando el método appendChild del elementotablaProductos.
+                    tablaProductos.appendChild(fila);
+                });
+            })
+
+            //Si la respuesta del servidor no es exitosa), se ejecuta el bloque catch.
+            .catch(function (error) {
+                // Código para manejar errores
+                alert('Error al obtener los productos.');
+            });
+    </script>
+</body>
+</html>
