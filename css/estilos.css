@@ -1,7 +1,13 @@
 /* Estilos para todo el proyecto */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
+	position: relative;
+}
+
+.tema-boton {
+	float: right;
 }
 
 .contenedor-centrado {
@@ -103,4 +109,41 @@ a {
 
 a:hover {
     background-color: #cd7b00;
+}
+
+/* Estilos para tema oscuro */
+body.dark-theme {
+    background-color: #333333;
+    color: white;
+}
+
+body.dark-theme .contenedor-centrado,
+body.dark-theme p,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme .img,
+body.dark-theme form,
+body.dark-theme table,
+body.dark-theme label,
+body.dark-theme input[type="text"],
+body.dark-theme input[type="number"],
+body.dark-theme textarea,
+body.dark-theme input[type="submit"],
+body.dark-theme button,
+body.dark-theme a {
+    color: white;
+}
+
+body.dark-theme {
+    color: white;
+}
+
+body.dark-theme .tema-boton {
+    background-color: #fdab13;
+    color: white;
+	float: right;
 }
