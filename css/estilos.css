@@ -42,7 +42,11 @@ body {
   }
 
 .tema-boton {
-	float: right;
+    display: block; 
+    margin: 0 auto;
+    height: 30px;
+    width: 60px;
+    text-align: center;
 }
 
 .contenedor-centrado {
