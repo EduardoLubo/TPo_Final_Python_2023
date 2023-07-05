@@ -14,8 +14,9 @@ html[data-theme='dark'] {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: var(--background-color, #f9f9f9);
 	position: relative;
+	color: var(--text-color, black);
 }
 
 /* ----------------------------------------------
@@ -92,7 +93,7 @@ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: white;
+    background-color: var(--background-color, #f9f9f9);
     border: 1px solid lightslategray;
     border-radius: 5px;
 }
@@ -101,7 +102,7 @@ table {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
-    background-color: white;
+    background-color: var(--background-color, #f9f9f9);
     border: 1px solid lightslategray;
     border-radius: 5px;
 }
@@ -165,38 +166,34 @@ a:hover {
 }
 
 /* Estilos para tema oscuro */
-body.dark-theme {
-    background-color: #333333;
-    color: white;
+body[data-theme='dark'] {
+    --background-color: #333333;
+    --text-color: white;
 }
 
-body.dark-theme .contenedor-centrado,
-body.dark-theme p,
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3,
-body.dark-theme h4,
-body.dark-theme h5,
-body.dark-theme h6,
-body.dark-theme .img,
-body.dark-theme form,
-body.dark-theme table,
-body.dark-theme label,
-body.dark-theme input[type="text"],
-body.dark-theme input[type="number"],
-body.dark-theme textarea,
-body.dark-theme input[type="submit"],
-body.dark-theme button,
-body.dark-theme a {
-    color: white;
+body[data-theme='dark'] .contenedor-centrado,
+body[data-theme='dark'] p,
+body[data-theme='dark'] h1,
+body[data-theme='dark'] h2,
+body[data-theme='dark'] h3,
+body[data-theme='dark'] h4,
+body[data-theme='dark'] h5,
+body[data-theme='dark'] h6,
+body[data-theme='dark'] .img,
+body[data-theme='dark'] form,
+body[data-theme='dark'] table,
+body[data-theme='dark'] label,
+body[data-theme='dark'] input[type="text"],
+body[data-theme='dark'] input[type="number"],
+body[data-theme='dark'] textarea,
+body[data-theme='dark'] input[type="submit"],
+body[data-theme='dark'] button,
+body[data-theme='dark'] a {
+    color: var(--text-color, white);
 }
 
-body.dark-theme {
-    color: white;
-}
-
-body.dark-theme .tema-boton {
-    background-color: #fdab13;
-    color: white;
-	float: right;
+body[data-theme='dark'] .tema-boton {
+    background-color: var(--link-color, #fdab13);
+    color: var(--text-color, white);
+    float: right;
 }
