@@ -1,5 +1,17 @@
 /* Estilos para todo el proyecto */
 
+/* ---------- TEMAS  ---------- */
+html[data-theme='light'] {
+    --background-color: white;
+    --text-color: black;
+    --link-color: #543fd7;
+}
+html[data-theme='dark'] {
+    --background-color: black;
+    --text-color: white;
+    --link-color: #828fff;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
